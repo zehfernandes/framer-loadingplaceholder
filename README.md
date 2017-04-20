@@ -62,7 +62,7 @@ Placeholder = require 'LoadingPlaceholder'
 placeholder.loadedAll()
 ```
 
-### Overwrite default elements
+## Overwrite default elements
 
 If you want overwrite the deafult Placeholder Element or the Default Animation you can use this methods:
 
