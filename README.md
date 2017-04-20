@@ -2,7 +2,7 @@
 
 Choreography and free of side effects.
 
-[![](https://www.dropbox.com/s/y0hukvgdusa6ygc/placeholder-framer.png?dl=0)](https://framer.cloud/NApWd/)
+![https://framer.cloud/NApWd/](./image-example.png)
 
 [See the demo](https://framer.cloud/NApWd/)
 
@@ -17,7 +17,7 @@ Choreography and free of side effects.
 
 Apply to any layer you want to show a placeholder.
 
-```
+```coffee
 Placeholder = require 'LoadingPlaceholder'
 
 YOURLAYER.placeholder()
@@ -25,17 +25,17 @@ YOURLAYER.placeholder()
 
 You can set the placeholder to the parent layer and specify the `depth` property to replace just the children layers. For example:
 
-```
- CardHeader = new Layer
-    name: "Card Header"
+```coffee
+CardHeader = new Layer
+  name: "Card Header"
 
-  avatar = new Layer
-    name: "Avatar"
-    parent: CardHeader
+avatar = new Layer
+  name: "Avatar"
+  parent: CardHeader
 
-  name = new Layer
-    name: "Name"
-    parent: CardHeader
+name = new Layer
+  name: "Name"
+  parent: CardHeader
 
 CardHeader.placeholder
     depth: 1
@@ -47,7 +47,7 @@ In that example the Layers `avatar` and `name` recive a placeholder.
 
 To show the content and trigger the entrance animation use the method `loaded()`:
 
-```
+```coffee
 # You can trigger the animation to a particular layer
 YOURLAYER.loaded()
 
@@ -57,7 +57,7 @@ CardHeader.loaded()
 
 Another method is the shortcut `loadedall()`. It will search for all placeholder layers in current stage
 
-```
+```coffee
 Placeholder = require 'LoadingPlaceholder'
 placeholder.loadedAll()
 ```
@@ -66,13 +66,13 @@ placeholder.loadedAll()
 
 If you want overwrite the deafult Placeholder Element or the Default Animation you can use this methods:
 
-```
+```coffee
 Placeholder = require 'LoadingPlaceholder'
 
 # Just for the specific layer
 YOURLAYER.placeholder
-	customElement: [function]
-	customAnimation: [function]
+    customElement: [function]
+    customAnimation: [function]
 
 # Apply global to all the placeholders
 Placeholder.defaultElement = [function]
@@ -81,19 +81,19 @@ Placeholder.defaultAnimation = [function]
 
 Overwrite using this follow functions:
 
-```
+```coffee
 # Element
 customPlaceholder = (layer) ->
-	newPlaceholder = new Layer
-		width: layer.width # var layer is the reference to your content layer
+  newPlaceholder = new Layer
+    width: layer.width # var layer is the reference to your content layer
     height: layer.height
 
-	return newPlaceholder
+  return newPlaceholder
 
 # Animation
 custonAnimation = (layer, placeholder, delay) ->
-	# Rewrite the states:
+  # Rewrite the states:
   # layer.states.placeholderIn
-	# layer.states.placeholderOut
+  # layer.states.placeholderOut
   # placeholder.states.placeholderOut
 ```
