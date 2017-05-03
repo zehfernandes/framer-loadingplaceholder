@@ -20,6 +20,10 @@ _destroyMask = (currentLayer) ->
   currentLayer.x = mask.x
   currentLayer.y = mask.y
 
+  delete currentLayer.states.placeholderOut
+  delete currentLayer.states.placeholderIn
+  delete currentLayer.placeholderParent
+
   mask.destroy()
 
 _startAnimateLoaded = (layer, delay) ->
@@ -33,6 +37,7 @@ _startAnimateLoaded = (layer, delay) ->
 
   currentLayer.on Events.AnimationEnd, ->
     _destroyMask(currentLayer)
+
   placeholder.on Events.AnimationEnd, ->
     _destroyPlaceHolder(placeholder)
 
@@ -88,6 +93,8 @@ _createPlaceHolders = (placeLoaders, customElement, customAnimation) ->
   delay = 0
 
   for layer in placeLoaders
+    layer.off(Events.AnimationEnd)
+
     mask = new Layer
       name: "placeholder"
       parent: layer.parent
