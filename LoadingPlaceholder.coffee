@@ -65,7 +65,8 @@ _drawTemplateLayer = (layer) ->
 
   animationLoading = new Animation gradient,
     x: placeholder.width
-    time: 0.9
+    options:
+      time: 0.7
 
   animationLoading.start()
   animationLoading.on Events.AnimationEnd, ->
